@@ -1,17 +1,12 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom"
+import {Routes, Route, Link} from "react-router-dom"
 import Inicio from "./components/Inicio";
 import Contacto from "./components/Contacto";
 import Nosotros from "./components/Nosotros";
+import Civilization from "./components/Civilization";
 
 function App() {
   return (
-    <Router>
       <div className="container mt-5">
         <div className="btn-group">
           <Link to="/" className="btn btn-dark">
@@ -25,19 +20,13 @@ function App() {
           </Link>
         </div>
         <hr/>
-        <Switch>
-          <Route path="/contacto" component={<Contacto />}>
-        
-          </Route>
-          <Route path="/nosotros" component={<Nosotros />}>
-            
-          </Route>
-          <Route path="/" exact component={<Inicio />}>
-           
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/nosotros/:id" element={<Civilization/>} />
+          <Route path="/contacto" element={<Contacto/>} />
+          <Route path="/nosotros" element={<Nosotros/>} />
+          <Route path="/" element={<Inicio/>} />
+        </Routes>
       </div>
-    </Router>
   );
 }
 
